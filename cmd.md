@@ -3,6 +3,9 @@
 From docs https://ollycope.com/software/yoyo/latest/#
  
 ## yoyo new
+
+`yoyo new -m "Add column to foo"`
+
 Start a new migration. yoyo new will create a new migration file and opens it your configured editor.
 
 By default a Python formation migration will be created. To use the simpler SQL format, specify --sql.
