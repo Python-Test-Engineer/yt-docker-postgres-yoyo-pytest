@@ -10,7 +10,8 @@ Set up of Docker with Postgress, PgAdmin and Adminer with Python CRUD.
 
 Combines PgAdmin and Adminer for DB viewing.
 
-*psycopg2.extras did not work for me*
+Don't forget `docker compose up -d` or `docker compose up`.
+
 
 ## Set up Docker-Postgres-PgAdmin-Adminer
 [My YouTube Video](https://youtu.be/mipRKPHwlBkI)
