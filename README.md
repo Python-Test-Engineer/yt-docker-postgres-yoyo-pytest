@@ -1,13 +1,23 @@
-# Integrating Python and Postgres
+# Database migrations with YoYo
+
+*view in preview for images, otherwise view images in images folder.*
+
+Based on: https://www.youtube.com/watch?v=2ldy3HcW_w8 with a variety of adaptations for my Windows set up.
+
+https://ollycope.com/software/yoyo/latest/#
+
 Set up of Docker with Postgress, PgAdmin and Adminer with Python CRUD.
 
 Combines PgAdmin and Adminer for DB viewing.
 
 *psycopg2.extras did not work for me*
 
-[YouTube](https://youtu.be/mipRKPHwlBkI)
+## Set up Docker-Postgres-PgAdmin-Adminer
+[My YouTube Video](https://youtu.be/mipRKPHwlBkI)
 
 https://youtu.be/mipRKPHwlBk
+
+I use a named volume here but video has bind mount volume - used in `docker-compose-bound-mount.yml`
 
 NOTE
 ```
