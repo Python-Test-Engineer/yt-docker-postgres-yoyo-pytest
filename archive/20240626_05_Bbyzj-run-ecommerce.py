@@ -4,7 +4,7 @@ Run ecommerce
 
 from yoyo import step
 
-__depends__ = {"20240626_04_AF8GL-add-categories"}
+__depends__ = {""}
 
 steps = [
     step(

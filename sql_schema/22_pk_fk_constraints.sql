@@ -8,4 +8,4 @@ FROM
       ON tc.constraint_name = kcu.constraint_name
     JOIN information_schema.constraint_column_usage AS ccu
       ON ccu.constraint_name = tc.constraint_name
-WHERE constraint_type = 'FOREIGN KEY' 
+WHERE constraint_type in ('FOREIGN KEY', 'PRIMARY KEY') AND tc.table_name NOT LIKE 'pg%'
