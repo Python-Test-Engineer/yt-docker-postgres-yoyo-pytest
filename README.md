@@ -6,6 +6,8 @@ Based on: https://www.youtube.com/watch?v=2ldy3HcW_w8 with a variety of adaptati
 
 https://ollycope.com/software/yoyo/latest/#
 
+https://github.com/medwig/yoyo-migration-tutorial
+
 Set up of Docker with Postgress, PgAdmin and Adminer with Python CRUD.
 
 Combines PgAdmin and Adminer for DB viewing.
