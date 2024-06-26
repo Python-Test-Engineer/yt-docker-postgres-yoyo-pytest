@@ -1,6 +1,8 @@
+version: "3.9"
+
 services:
   postgres:
-    image: postgres:16-alpine #postgres:
+    image: integratedaisolutions/postgres-pgvector:latest #myuser/pgvector #postgres:
     environment:
       - POSTGRES_DB=postgres # optional
       - POSTGRES_USER=postgres
@@ -8,10 +10,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      # uses bound volume and a db-data folder will be created in project
-      # - ./db-data/:/var/lib/postgresql/data/
-      # uses named volume in container not a bound mount volume
-      - data:/var/lib/postgresql/data
+      - ./db-data/:/var/lib/postgresql/data/
 
   pg-admin:
     image: dpage/pgadmin4:latest
@@ -19,7 +18,8 @@ services:
       - PGADMIN_DEFAULT_EMAIL=admin@email.com
       - PGADMIN_DEFAULT_PASSWORD=admin
       - PGADMIN_LISTEN_PORT=5050
-
+    volumes:
+      - ./pgadmin-data/:/var/lib/pgadmin/
     ports:
       - "5050:5050"
 

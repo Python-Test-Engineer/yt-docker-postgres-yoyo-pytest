@@ -19,7 +19,7 @@ try:
         host="host.docker.internal",
     )
     cursor = connection.cursor()
-    for _ in range(20):
+    for _ in range(40):
         postgres_insert_query = """ INSERT into employee(name, state) VALUES (%s, %s)"""
         record_to_insert = (
             get_random_string(random.randint(5, 10)),
