@@ -1,11 +1,3 @@
-"""
-Create ecommerce db tables
-"""
-
-from yoyo import step
-
-__depends__ = {}
-
 steps = [
     step(
         """
@@ -105,6 +97,17 @@ create table order_products (
 )   ;
 
         """,
-        "",
+        """
+    drop table users;
+    drop table categories;
+    drop table products;
+    drop table tags;
+    drop table sales_orders;
+    drop table product_tags;
+    drop table cc_transactions;
+    drop table product_categories;
+    drop table order_products;
+
+        """,
     )
 ]
