@@ -22,4 +22,15 @@ steps = [
         """,
         "DELETE FROM products;",
     ),
+    step(
+        """
+        ALTER TABLE products
+        ADD CONSTRAINT regular_price_non_zero CHECK (regular_price > 0);
+        );
+        """,
+        """
+        ALTER TABLE products
+        DROP CONSTRAINT regular_price_non_zero;
+        """,
+    ),
 ]
