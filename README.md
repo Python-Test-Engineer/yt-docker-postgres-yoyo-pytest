@@ -33,6 +33,8 @@ In thisproject, yt-docker-postgres-yoyo-pytest, we use Docker and Postgres along
 
 Using various SQL scripts, we can get a list of all constraints - PK, FK, Defaults, Unique and Check - which can then be used to carry out structural testing to ensure that database intgerity is preserved during development.
 
+`yoyo init --database postgresql://postgres:postgres@host.docker.internal/postgres?port=5432 migrations`
+
 YoYo acts like Git for our migrations with rollback made possible.
 
 `yoyo new -m "add foreign keys"` creates a file in the `migrations` folder that has 'steps' of SQL and their rollback. The file has a name of `datestamp-random_chars-message_used.py`.

@@ -1,6 +1,15 @@
+"""
+Add tables
+"""
+
+from yoyo import step
+
+__depends__ = {}
+
 steps = [
     step(
         """
+-- get_schema_create
 create table users (
    id          serial                   not null     ,
    email       varchar(255)             not null     ,
@@ -11,7 +20,20 @@ create table users (
    updated_at  timestamp with time zone not null     ,
    constraint pk_users primary key (id)
 )   ;
-
+create table roles (
+   id          serial                   not null,
+   name        varchar(255)             not null,
+   inserted_at timestamp with time zone not null,
+   updated_at  timestamp with time zone not null,
+   constraint pk_roles primary key (id)
+)   ;
+create table user_roles (
+   user_id     integer                  not null,
+   role_id     integer                  not null,
+   inserted_at timestamp with time zone not null,
+   updated_at  timestamp with time zone not null,
+   constraint pk_user_roles primary key (user_id,role_id)
+)   ;
 create table categories (
    id          serial                   not null,
    name        varchar(255)             not null,
@@ -52,7 +74,19 @@ create table sales_orders (
    updated_at  timestamp with time zone not null,
    constraint pk_sales_orders primary key (id)
 )   ;
-
+create table coupons (
+   id          serial                   not null      ,
+   code        varchar(255)             not null      ,
+   description text                                   ,
+   active      bool                      default true ,
+   value       numeric                                ,
+   multiple    bool                      default false,
+   start_date  timestamp with time zone               ,
+   end_date    timestamp with time zone               ,
+   inserted_at timestamp with time zone not null      ,
+   updated_at  timestamp with time zone not null      ,
+   constraint pk_coupons primary key (id)
+)   ;
 create table product_tags (
    product_id  integer                  not null,
    tag_id      integer                  not null,
@@ -75,6 +109,20 @@ create table cc_transactions (
    updated_at         timestamp with time zone not null,
    constraint pk_cc_transactions primary key (id)
 )   ;
+create table sessions (
+   id          varchar(255)             not null,
+   data        text                             ,
+   inserted_at timestamp with time zone not null,
+   updated_at  timestamp with time zone not null,
+   constraint pk_sessions primary key (id)
+)   ;
+create table product_statuses (
+   id          serial                   not null,
+   name        varchar(255)             not null,
+   inserted_at timestamp with time zone not null,
+   updated_at  timestamp with time zone not null,
+   constraint pk_product_statuses primary key (id)
+)   ;
 create table product_categories (
    category_id integer                  not null,
    product_id  integer                  not null,
@@ -95,18 +143,18 @@ create table order_products (
    updated_at  timestamp with time zone not null,
    constraint pk_order_products primary key (id)
 )   ;
-
         """,
         """
-    drop table users;
-    drop table categories;
-    drop table products;
-    drop table tags;
-    drop table sales_orders;
-    drop table product_tags;
-    drop table cc_transactions;
-    drop table product_categories;
-    drop table order_products;
+        DROP TABLE users;
+        DROP TABLE categories;
+        DROP TABLE products;
+        DROP TABLE tags;       
+        DROP TABLE sales_orders;
+        DROP TABLE product_tags;
+        DROP TABLE cc_transactions;
+        DROP TABLE cc_transactions;
+        DROP TABLE product_categories;
+        DROP TABLE order_products;
 
         """,
     )
