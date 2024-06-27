@@ -36,6 +36,7 @@ alter table categories add constraint fk_category_parent_category
     references categories (id) ;
 
         """,
+        # ROLLBACK
         """
             
     -- get_constraints_drop 
