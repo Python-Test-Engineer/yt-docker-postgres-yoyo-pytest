@@ -60,7 +60,7 @@ sources = %(here)s/migrations
 database = postgresql://postgres:postgres@host.docker.internal/postgres?port=5432
 ```
 
-In the video, you will see examples of building up a number of migration files and alos how to rollback one, many or all migrations.
+In the video, you will see examples of building up a number of migration files and also how to rollback one, many or all migrations.
 
 Our DB has PK, FK, Unique and Check constraints and we can access Postgres Schema to run tests on the strucure of the DB:
 
@@ -70,9 +70,32 @@ Our DB has PK, FK, Unique and Check constraints and we can access Postgres Schem
 
 This is in addition to CRUD testing we may do. This helps ensure that we have not damaged our DB schema during any development.
 
+
+### YoYo
+
+When I installed on Windows it complained of 'no pkg_resources'.
+
+This was fixed with installing setuptools, (in requirements.txt).
+
+## Using existing unapplied migrations I ran `yoyo list` I got:
+
+![Initial](./images/yoyo-initial.png 'YoYo')
+
+## After `yoyo apply`:
+
+![First Apply](./images/yoyo-list-after-apply.png 'YoYo')
+
+## After two `yoyo rollback`:
+
+![Two Rollbacks](./images/yoyo-list-after-two-rollbacks.png 'YoYo')
+
+## PgAdmin looks like:
+
+![PgAdmin](./images/yoyo-pgadmin.png 'YoYo')
+
 The project also includes a folder of sql_postgress python modules to perfome CRUD etc.
 
-It uses the standard [docker-postgres-pgadmin-adminer-python-sql](https://github.com/Python-Test-Engineer/yt-docker-postgres-pgadmin-adminier-python-sql) project to set up Docker Postgres.
+It uses the standard [docker-postgres-pgadmin-adminer-python-sql](https://github.com/Python-Test-Engineer/yt-docker-postgres-pgadmin-adminier-python-sql) project to set up Docker Postgres that has a link to the video on setting it up: [YouTube](https://www.youtube.com/watch?v=mipRKPHwlBk).
 
 <br>
 
@@ -134,25 +157,3 @@ run docker-compose up in terminal ->
 admininer login on port http://localhost:8080
 
 <img src="./images/adminer-login.png"  width="500" >
-
-### YoYo
-
-When I installed on Windows it complained of 'no pkg_resources'.
-
-This was fixed with installing setuptools, (in requirements.txt).
-
-## Using existing unapplied migrations I ran `yoyo list` I got:
-
-![Initial](./images/yoyo-initial.png 'YoYo')
-
-## After `yoyo apply`:
-
-![First Apply](./images/yoyo-list-after-apply.png 'YoYo')
-
-## After two `yoyo rollback`:
-
-![Two Rollbacks](./images/yoyo-list-after-two-rollbacks.png 'YoYo')
-
-## PgAdmin looks like:
-
-![PgAdmin](./images/yoyo-pgadmin.png 'YoYo')
