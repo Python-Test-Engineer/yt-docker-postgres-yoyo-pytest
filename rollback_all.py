@@ -1,4 +1,5 @@
-# scripts/rollback.py
+# sRollback all migrations - sort order is important hence the sorting...
+
 import os  # provides ways to access the Operating System and allows us to read the environment variables
 from dotenv import load_dotenv
 from yoyo import read_migrations, get_backend

@@ -1,6 +1,13 @@
 # Database migrations with YoYo
 
+https://pytest-cookbook.com/toolbox/docker_postgres_yoyo_pytest/ 
+
 *view in preview for images, otherwise view images in images folder.*
+
+To make my set up work, I needed to install setuptools in `requirments.txt` as yoyo complained of `pkg_resources` not installed.
+
+**Don't forget to start Docker prior to `docker compose up -d`.**
+
 
 Based on: https://www.youtube.com/watch?v=2ldy3HcW_w8 with a variety of adaptations for my Windows set up.
 
@@ -36,6 +43,8 @@ YoYo acts like Git for our migrations with rollback made possible.
 ![STEPS](./images/yoyo-steps.png  "steps")
 
 *There can be many steps in a file.*
+
+We use `python-dotenv` with a .env file.
 
 The `sql_schema folder` contains scripts to query the schema tables for all constraints.
 
