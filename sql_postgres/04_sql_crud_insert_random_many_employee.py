@@ -1,14 +1,11 @@
 import psycopg2
-
 import string
 import random
 
 
-def get_random_string(length):
-    letters = string.ascii_lowercase
-    letters = string.ascii_uppercase + string.digits
-    result_str = "".join(random.choice(letters) for i in range(length))
-    return result_str
+def get_random_string(n):
+    result = "".join(random.choices(string.ascii_uppercase + string.digits, k=n1))
+    return result
 
 
 try:
@@ -17,18 +14,19 @@ try:
         user="postgres",
         password="postgres",
         host="host.docker.internal",
+        # host="postgres", # does not work
     )
     cursor = connection.cursor()
-    for _ in range(40):
+    for i in range(20):
+        n1 = random.randint(5, 15)
+        n2 = random.randint(3, 10)
         postgres_insert_query = """ INSERT into employee(name, state) VALUES (%s, %s)"""
-        record_to_insert = (
-            get_random_string(random.randint(5, 10)),
-            get_random_string(random.randint(5, 10)),
-        )
+        record_to_insert = (get_random_string(n1), get_random_string(n2))
         cursor.execute(postgres_insert_query, record_to_insert)
+
         connection.commit()
         count = cursor.rowcount
-        print(count, "Record inserted successfully into employee table")
+        print(count, "Record inserted successfully into mobile table")
 
 except (Exception, psycopg2.Error) as error:
     print("Failed to insert record into mobile table", error)
